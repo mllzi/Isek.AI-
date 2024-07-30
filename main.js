@@ -10,12 +10,12 @@ const perguntas = [
         
         alternativas: [ 
             {
-                texto1: ":3?",
-                afirmação: "afirmação*"
+                texto1: "Sim.",
+                afirmação: "Afirmação"
             },
             {
-                texto2: ":p?",
-                afirmação: "afirmação"
+                texto2: "Não.",
+                afirmação: "Afirmação"
             }    
         ]
     },
@@ -50,23 +50,29 @@ const perguntas = [
         ]
     },
 
+];
+
+let atual = 0;
+let perguntaAtual;
+let historiaFinal = "";
+
+function mostraPergunta() {
+    if (atual >= perguntas.length) {
+        mostraResultado();
+        return;
+    }
+    perguntaAtual = perguntas[atual];
+    caixaPerguntas.textContent = perguntaAtual.enunciado;
+    caixaAlternativas.textContent = "";
+    mostraAlternativas();
+}
 
 
-
-
-
-]
-
-
-
-
-
-
-
-
-
-
-//enunciado: "Pergunta 1",
-//alternativas: 
-    //"Alternativa 1",
-    //"Alternativa 2"
+function mostraAlternativas(){
+    for(const alternativa of perguntaAtual.alternativas) {
+        const botaoAlternativas = document.createElement("button");
+        botaoAlternativas.textContent = alternativa.texto;
+        botaoAlternativas.addEventListener("click", () => respotaSelecionada(alternativa));
+        caixaAlternativas.appendChild(botaoAlternativas);
+    }
+}
