@@ -6,7 +6,7 @@ const textoResultado = document.querySelector(".texto-resultado");
 
 const perguntas = [
     {
-        enunciado1: "A criação de jardins zoológicos é uma tradição boa para a natureza?",
+        enunciado: "A criação de jardins zoológicos é uma tradição boa para a natureza?",
         
         alternativas: [ 
             {
@@ -21,7 +21,7 @@ const perguntas = [
     },
 
     {
-        enunciado2: "Vale a pena comer ostras?",
+        enunciado: "Vale a pena comer ostras?",
         
         alternativas: [ 
             {
@@ -36,7 +36,7 @@ const perguntas = [
     },
 
     {
-        enunciado3: "PERGUNTA 3!!!!!!",
+        enunciado: "PERGUNTA 3!!!!!!",
         
         alternativas: [ 
             {
@@ -75,4 +75,19 @@ function mostraAlternativas(){
         botaoAlternativas.addEventListener("click", () => respotaSelecionada(alternativa));
         caixaAlternativas.appendChild(botaoAlternativas);
     }
+}
+
+
+
+function respostaSelecionada(opcaoSelecionada) {
+    const afirmacoes = opcaoSelecionada.afirmacao;
+    historiaFinal += afirmacoes + " ";
+    atual++;
+    mostraPergunta();
+}
+
+
+
+function mostraResultado() {
+    caixa
 }
