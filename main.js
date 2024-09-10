@@ -1,55 +1,60 @@
 const caixaPrincipal = document.querySelector(".caixa-principal");
 const caixaPerguntas = document.querySelector(".caixa-perguntas");
-const caixaAlternativas = document.querySelector(".caixas-alternativas");
+const caixaAlternativas = document.querySelector(".caixa-alternativas");
 const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
 
 const perguntas = [
     {
         enunciado: "A criação de jardins zoológicos é uma tradição boa para a natureza?",
-        
-        alternativas: [ 
+        alternativas: [
             {
-                texto1: "Sim.",
-                afirmação: "Afirmação"
+                texto: "Sim",
+                afirmacao: ["Vários animais foram preservados",
+                    "por causa dos zoológicos.",
+                ]
             },
             {
-                texto2: "Não.",
-                afirmação: "Afirmação"
-            }    
+                texto: "Não",
+                afirmacao: ["Sempre há o risco",
+                    "de abuso com os animais...",
+                ]
+            }
         ]
     },
-
     {
-        enunciado: "Vale a pena comer ostras?",
-        
-        alternativas: [ 
+        enunciado: "Você comeria uma ostra?",
+        alternativas: [
             {
-                texto1: ":3?",
-                afirmação: "afirmação*"
+                texto: "Sim!",
+                afirmacao: ["Ter novas experiências",
+                    "ajuda no desenvolvimento",
+                    "do cérebro."
+                ]
             },
             {
-                texto2: ":p?",
-                afirmação: "afirmação"
-            }    
+                texto: "Não...",
+                afirmacao: ["As vezes é melhor",
+                            "não arriscar, né?",
+                        ]
+            }
         ]
     },
-
     {
-        enunciado: "PERGUNTA 3!!!!!!",
-        
-        alternativas: [ 
+        enunciado: "Tem como 'ser simpático demais?' ",
+        alternativas: [
             {
-                texto1: ":3?",
-                afirmação: "afirmação*"
+                texto: "Sim.",
+                afirmacao: "Não vale a pena deixar os outros",
+                            "pisarem em você.",
             },
             {
-                texto2: ":p?",
-                afirmação: "afirmação"
-            }    
+                texto: "Não",
+                afirmacao: "Ser gentil não é uma fraqueza,",
+                        
+            }
         ]
     },
-
 ];
 
 let atual = 0;
@@ -67,17 +72,14 @@ function mostraPergunta() {
     mostraAlternativas();
 }
 
-
-function mostraAlternativas(){
-    for(const alternativa of perguntaAtual.alternativas) {
+function mostraAlternativas() {
+    for (const alternativa of perguntaAtual.alternativas) {
         const botaoAlternativas = document.createElement("button");
         botaoAlternativas.textContent = alternativa.texto;
-        botaoAlternativas.addEventListener("click", () => respotaSelecionada(alternativa));
+        botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
         caixaAlternativas.appendChild(botaoAlternativas);
     }
 }
-
-
 
 function respostaSelecionada(opcaoSelecionada) {
     const afirmacoes = opcaoSelecionada.afirmacao;
@@ -85,8 +87,6 @@ function respostaSelecionada(opcaoSelecionada) {
     atual++;
     mostraPergunta();
 }
-
-
 
 function mostraResultado() {
     caixaPerguntas.textContent = "Em 2049...";
